@@ -2,7 +2,7 @@
 
 class Application
   module Events
-    class Hired < Event
+    class Note < Event
       def routing_key
         'applications'
       end

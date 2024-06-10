@@ -1,2 +1,15 @@
-class Application::Events::Interview < Event
+# frozen_string_literal: true
+
+class Application
+  module Events
+    class Interview < Event
+      def routing_key
+        'applications'
+      end
+
+      def queue_name
+        'applications'
+      end
+    end
+  end
 end
