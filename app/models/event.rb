@@ -3,7 +3,11 @@
 class Event < ApplicationRecord
   belongs_to :initiable, polymorphic: true
 
+<<<<<<< HEAD
   # after_create :publish_event
+=======
+  after_create :publish_event
+>>>>>>> master
 
   def publish_event
     Events::Publisher.new.publish({ event_id: id }, queue_name, routing_key)
