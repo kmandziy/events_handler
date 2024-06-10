@@ -1,0 +1,2 @@
+class JobEventsController < ApplicationController
+end

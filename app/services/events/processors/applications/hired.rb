@@ -5,7 +5,9 @@ module Events
     module Applications
       class Hired < Base
         def process
-          event.initiable.hired!
+          application = event.initiable
+          application.hired!
+          application.hires.create(hire_date: params[:hire_date])
         end
       end
     end

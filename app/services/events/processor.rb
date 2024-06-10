@@ -5,22 +5,19 @@ module Events
     attr_reader :event
 
     PROCESSING_SETTINGS = {
-      Job::Events::Activated => Processors::Jobs::Activated,
-      Job::Events::Deactivated => Processors::Jobs::Deactivated,
-      Application::Events::Hired => Processors::Applications::Hired,
-      Application::Events::Interview => Processors::Applications::Interview,
-      Application::Events::Rejected => Processors::Applications::Rejected
+      Job::Events::Activated => Events::Processors::Jobs::Activated,
+      Job::Events::Deactivated => Events::Processors::Jobs::Deactivated,
+      Application::Events::Hired => Events::Processors::Applications::Hired,
+      Application::Events::Interview => Events::Processors::Applications::Interview,
+      Application::Events::Rejected => Events::Processors::Applications::Rejected,
+      Application::Events::Note => Events::Processors::Applications::Note
     }.freeze
-
-    SKIP_PROCESSING_EVENTS_LIST = [Application::Events::Note].freeze
 
     def initialize(event_id:)
       @event = Event.find(event_id)
     end
 
     def process
-      return if SKIP_PROCESSING_EVENTS_LIST.include?(event.class)
-
       processor_klass.new(event: event).process
     end
 

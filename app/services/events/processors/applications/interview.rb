@@ -5,7 +5,9 @@ module Events
     module Applications
       class Interview < Base
         def process
-          event.initiable.interview!
+          application = event.initiable
+          application.interview!
+          application.interviews.create(interview_date: params[:hire_date])
         end
       end
     end
