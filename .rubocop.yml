@@ -1,0 +1,30 @@
+require:
+  - rubocop-rails
+  - rubocop-performance
+  - rubocop-rspec
+
+AllCops:
+  NewCops: enable
+  Exclude:
+    - 'db/schema.rb'
+    - 'bin/**/*'
+    - 'node_modules/**/*'
+
+# Rails-specific configuration
+Rails:
+  Enabled: true
+
+# RSpec-specific configuration
+RSpec:
+  Enabled: true
+
+# Performance-specific checks
+Performance:
+  Enabled: true
+
+Style/Documentation:
+  Enabled: false
+
+# Example of overriding a specific cop
+Metrics/BlockLength:
+  ExcludedMethods: ['describe', 'context', 'feature', 'scenario', 'class_methods', 'instance_methods']
