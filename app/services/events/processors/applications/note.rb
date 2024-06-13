@@ -5,6 +5,7 @@ module Events
     module Applications
       class Note < Base
         def process
+          application = event.initiable
           application.notes.create(content: params[:content])
         end
       end

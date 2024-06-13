@@ -2,7 +2,7 @@
 
 module Events
   class Processor
-    attr_reader :event
+    attr_reader :event, :params
 
     PROCESSING_SETTINGS = {
       Job::Events::Activated => Events::Processors::Jobs::Activated,
@@ -13,12 +13,13 @@ module Events
       Application::Events::Note => Events::Processors::Applications::Note
     }.freeze
 
-    def initialize(event_id:)
-      @event = Event.find(event_id)
+    def initialize(params:)
+      @event = Event.find(params[:event_id])
+      @params = params
     end
 
-    def process
-      processor_klass.new(event: event).process
+    def call
+      processor_klass.new(event: event, params: params).process
     end
 
     def processor_klass

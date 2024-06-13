@@ -28,6 +28,7 @@ Style/Documentation:
 Metrics/MethodLength:
   Exclude:
     - 'app/controllers/application_events_controller.rb'
+    - 'app/controllers/job_events_controller.rb'
 
 RSpec/MultipleMemoizedHelpers:
   Exclude:
