@@ -25,6 +25,14 @@ Performance:
 Style/Documentation:
   Enabled: false
 
+Metrics/MethodLength:
+  Exclude:
+    - 'app/controllers/application_events_controller.rb'
+
+RSpec/MultipleMemoizedHelpers:
+  Exclude:
+    - 'spec/**/*'
+
 # Example of overriding a specific cop
 Metrics/BlockLength:
   ExcludedMethods: ['describe', 'context', 'feature', 'scenario', 'class_methods', 'instance_methods']

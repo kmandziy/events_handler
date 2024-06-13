@@ -6,7 +6,7 @@ class Event < ApplicationRecord
   after_create :publish_event
 
   def publish_event
-    Events::Publisher.new.publish({ event_id: id }, queue_name, routing_key)
+    # Events::Publisher.new.publish({ event_id: id }, queue_name, routing_key)
   end
 
   def routing_key

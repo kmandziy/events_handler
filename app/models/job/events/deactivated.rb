@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Job
+class Job
   module Events
     class Deactivated < Event
       def routing_key
