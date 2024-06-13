@@ -13,7 +13,7 @@ module Events
       Connection.instance.close
     end
 
-    def subscribe_queue(queue)
+    def self.subscribe_queue(queue)
       queue.subscribe(block: true, manual_ack: true) do |delivery_info, _properties, body|
         handle_message(body)
 

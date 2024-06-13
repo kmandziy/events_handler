@@ -18,8 +18,16 @@ module Rabbitmq
     end
 
     def connection_options
-      { username: 'event_handler_backend_user', password: 'dkksdkkskqwj', automatically_recover: true,
-        host: ENV['RABBITMQ_HOST'] || 'localhost' }
+      {
+        username: creds_for(:username),
+        password: creds_for(:password),
+        host: creds_for(:host),
+        automatically_recover: true
+      }
+    end
+
+    def creds_for(key)
+      Rails.application.credentials.dig(Rails.env.to_sym, :rabbitmq, key)
     end
   end
 end
