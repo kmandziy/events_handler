@@ -1,0 +1,113 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+paths:
+  "/application_events":
+    post:
+      summary: create application_event
+      tags:
+      - Events / Application
+      parameters: []
+      responses:
+        '200':
+          description: successful
+        '400':
+          description: wrong event type
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                event_type:
+                  type: string
+                application_id:
+                  type: integer
+                content:
+                  type: string
+                hire_date:
+                  type: string
+                  format: date-time
+                interview_date:
+                  type: string
+                  format: date-time
+              required:
+              - event_type
+              - application_id
+  "/applications":
+    get:
+      summary: list applications
+      responses:
+        '200':
+          description: successful
+  "/applications/{id}":
+    parameters:
+    - name: id
+      in: path
+      description: id
+      required: true
+      schema:
+        type: string
+    get:
+      summary: show application
+      responses:
+        '200':
+          description: successful
+  "/job_events":
+    post:
+      summary: create job_event
+      tags:
+      - Events / Job
+      parameters: []
+      responses:
+        '200':
+          description: successful
+        '400':
+          description: wrong event type
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                event_type:
+                  type: string
+                job_id:
+                  type: integer
+                content:
+                  type: string
+                hire_date:
+                  type: string
+                  format: date-time
+                interview_date:
+                  type: string
+                  format: date-time
+              required:
+              - event_type
+              - job
+  "/jobs":
+    get:
+      summary: list jobs
+      responses:
+        '200':
+          description: successful
+  "/jobs/{id}":
+    parameters:
+    - name: id
+      in: path
+      description: id
+      required: true
+      schema:
+        type: string
+    get:
+      summary: show job
+      responses:
+        '200':
+          description: successful
+servers:
+- url: http://{defaultHost}
+  variables:
+    defaultHost:
+      default: localhost:3000

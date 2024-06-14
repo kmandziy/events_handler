@@ -15,10 +15,12 @@ ActiveRecord::Schema[7.0].define(version: 2024_06_08_101316) do
   enable_extension "plpgsql"
 
   create_table "applications", force: :cascade do |t|
+    t.bigint "job_id", null: false
     t.integer "status", default: 0
     t.string "candidate_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["job_id"], name: "index_applications_on_job_id"
   end
 
   create_table "events", force: :cascade do |t|

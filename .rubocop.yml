@@ -28,7 +28,13 @@ Style/Documentation:
 Metrics/MethodLength:
   Exclude:
     - 'app/controllers/application_events_controller.rb'
+    - 'app/controllers/applications_controller.rb'
     - 'app/controllers/job_events_controller.rb'
+    - 'app/controllers/jobs_controller.rb'
+
+Rails/ReflectionClassName:
+  Exclude:
+    - 'app/models/**/*'
 
 RSpec/MultipleMemoizedHelpers:
   Exclude:
