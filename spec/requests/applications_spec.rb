@@ -3,7 +3,8 @@
 require 'swagger_helper'
 
 RSpec.describe 'applications' do
-  let!(:application) { create(:application) }
+  let!(:application) { create(:application, job: job) }
+  let!(:job) { create(:job, :activated) }
 
   let(:expected_data) do
     {

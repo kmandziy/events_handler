@@ -4,7 +4,10 @@ class ApplicationsController < ApplicationController
   def index
     render json: {
       success: true,
-      data: serialize_data(Application.all)
+      data: serialize_data(
+        Application.with_activated_job
+                   .includes(:job, :interviews, :hires, :hired_events, :rejected_events)
+      )
     }
   end
 

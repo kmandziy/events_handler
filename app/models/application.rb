@@ -15,6 +15,8 @@ class Application < ApplicationRecord
   enum status: { applied: 0, interview: 1, hired: 2, rejected: 3 }
 
   scope :ongoing_applications, -> { where.not(status: Application.statuses.values_at(:hired, :rejected)) }
+  scope :with_activated_job, -> { joins(:job).merge(Job.activated) }
+
   scope :hired_applications, -> { hired }
   scope :rejected_applications, -> { rejected }
 end
