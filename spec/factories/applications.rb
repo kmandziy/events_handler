@@ -4,6 +4,7 @@ FactoryBot.define do
   factory :application do
     candidate_name { Faker::Name.name }
     status { :applied }
+    job
 
     trait :interview do
       status { :interview }

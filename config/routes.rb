@@ -6,4 +6,6 @@ Rails.application.routes.draw do
 
   resources :application_events
   resources :job_events
+  resources :applications, only: %i[show index]
+  resources :jobs, only: %i[show index]
 end

@@ -3,6 +3,7 @@
 class CreateApplications < ActiveRecord::Migration[7.0]
   def change
     create_table :applications do |t|
+      t.references :job, null: false, index: true
       t.integer :status, default: 0
       t.string :candidate_name
 
