@@ -20,7 +20,10 @@ Ensure you have the following installed:
 
 ### 2. Install Dependencies
 
+```
 bundle install
 gem install foreman
 foreman start
+
+```
 
