@@ -1,25 +1,26 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Rails Project Setup with Foreman and RabbitMQ
 
-Things you may want to cover:
+This guide will help you set up a Rails project with Foreman to manage multiple processes, including a Sidekiq worker and a RabbitMQ subscriber.
 
-* Ruby version
+## Prerequisites
 
-* System dependencies
+Ensure you have the following installed:
 
-* Configuration
+- Ruby
+- Rails
+- PostgreSQL or any other database you're using
+- RabbitMQ
+- Bundler
 
-* Database creation
+## Getting Started
 
-* Database initialization
+### 1. Clone the Repository
 
-* How to run the test suite
+### 2. Install Dependencies
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+bundle install
+gem install foreman
+foreman start
 
