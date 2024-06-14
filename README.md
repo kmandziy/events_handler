@@ -2,7 +2,7 @@
 
 # Rails Project Setup with Foreman and RabbitMQ
 
-This guide will help you set up a Rails project with Foreman to manage multiple processes, including a Sidekiq worker and a RabbitMQ subscriber.
+This guide will help you set up a Rails project with Foreman to manage multiple processes, RabbitMQ subscriber.
 
 ## Prerequisites
 
