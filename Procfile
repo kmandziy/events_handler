@@ -1,2 +1,3 @@
 web: bundle exec rails server -p 3000
-worker: bundle exec rake rabbitmq:subscribe
+rabbitmq_subscriber_applications: bundle exec rake rabbitmq:subscribe_applications
+rabbitmq_subscriber_jobs: bundle exec rake rabbitmq:subscribe_jobs
