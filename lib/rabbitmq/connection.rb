@@ -3,13 +3,16 @@
 module Rabbitmq
   class Connection
     include Singleton
-
-    attr_reader :connection, :channel
-
     def initialize
-      @connection = Bunny.new(connection_options)
-      @connection.start
-      @channel = connection.create_channel
+      connection.start
+    end
+
+    def connection
+      @connection ||= Bunny.new(connection_options)
+    end
+
+    def channel
+      @channel ||= connection.create_channel
     end
 
     def close
@@ -27,7 +30,7 @@ module Rabbitmq
     end
 
     def creds_for(key)
-      Rails.application.credentials.dig(Rails.env.to_sym, :rabbitmq, key)
+      Rails.application.credentials.dig(:rabbitmq, key)
     end
   end
 end

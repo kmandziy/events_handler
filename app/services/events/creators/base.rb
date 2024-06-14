@@ -25,7 +25,7 @@ module Events
       end
 
       def publish_event
-        Events::Publisher.new.publish({ event_id: event.id }.merge(params), queue_name, route_name)
+        Events::Publisher.new.publish({ event_id: event.id }.merge!(params), queue_name, route_name)
       end
 
       def event_klass

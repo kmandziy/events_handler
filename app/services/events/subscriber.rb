@@ -5,24 +5,26 @@ module Events
     attr_reader :queue_name
 
     def self.start(queue_name)
-      channel = ::Rabbitmq::Client.instance.channel
       queue = channel.queue(queue_name, durable: true)
       subscribe_queue(queue)
     rescue Interrupt => _e
-      channel.close
-      Connection.instance.close
+      ::Rabbitmq::Connection.instance.close
     end
 
     def self.subscribe_queue(queue)
-      queue.subscribe(block: true, manual_ack: true) do |delivery_info, _properties, body|
-        handle_message(body)
-
-        channel.ack(delivery_info.delivery_tag)
+      queue.subscribe(block: true, manual_ack: true) do |_delivery_info, _properties, body|
+        params = JSON.parse(body).with_indifferent_access
+        service = ::Events::Processor.new(params: params)
+        service.call
+        Rails.logger.debug { "Event #{service.event.type} successfuly processed" }
+        Rails.logger.debug { "Initiable Status: #{service.event.initiable.status}" }
       rescue StandardError => e
         Rails.logger.debug { "Error processing message: #{e.message}" }
-
-        channel.nack(delivery_info.delivery_tag, false, false)
       end
+    end
+
+    def self.channel
+      @channel ||= ::Rabbitmq::Client.instance.channel
     end
 
     def self.handle_message(body)
