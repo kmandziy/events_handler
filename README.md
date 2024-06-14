@@ -24,6 +24,7 @@ Ensure you have the following installed:
 bundle install
 gem install foreman
 foreman start
-
 ```
+### 3. Test with swagger
 
+visit http://localhost:3000/api-docs/index.html
