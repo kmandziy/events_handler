@@ -18,6 +18,10 @@ Ensure you have the following installed:
 
 ### 1. Clone the Repository
 
+```
+git clone git@github.com:kmandziy/events_handler.git
+```
+
 ### 2. Install Dependencies
 
 ```
